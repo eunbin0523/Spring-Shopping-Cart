@@ -25,3 +25,5 @@ spec:
             cpu: "250m"
           limits: ## limit이 없으면 오토스케일링 문제 발생  
             cpu: "500m"
+      nodeSelector:
+        cloud.google.com/gke-nodepool: service-pool
