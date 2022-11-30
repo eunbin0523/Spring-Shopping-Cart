@@ -34,7 +34,7 @@ pipeline {
                 sh "git commit -m '[UPDATE] springshoppingcart ${env.BUILD_NUMBER} image versioning'"
 
                 withCredentials([gitUsernamePassword(credentialsId: 'eunbin0523')]) {
-                    sh "git push -u origin main"
+                    sh "git push -u origin master"
                 }
             }
             post {
