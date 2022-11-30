@@ -3,20 +3,20 @@ kind: Deployment
 metadata:
   name: shopping-was-deployment
   labels:
-    node: service
+    app: shopping-app
 spec:
   replicas: 1 # pod 개수 지정 
   selector:
     matchLabels:
-      node: service
+      app: shopping-app
   template:
     metadata:
       labels:
-        node: service
+        app: shopping-app
     spec:
       containers:
       - name: shopping-container
-        image: asia.gcr.io/eunoia0523/springshoppingcart:v1 # 아까 자신이 gcr에 업로드한 이미지 
+        image: asia.gcr.io/eunoia0523/springshoppingcart:v1 
         ports:
         - containerPort: 8080
         resources:

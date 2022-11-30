@@ -11,7 +11,7 @@ pipeline {
             }
         }
         
-        stage("Push image to gcr") {
+        stage("Push image to ar") {
             steps {
                 script {
                     docker.withRegistry('https://asia.gcr.io', 'gcr:eunoia0523') {
@@ -26,11 +26,11 @@ pipeline {
             steps {
 
                 git credentialsId: 'eunbin0523', 
-                    url: 'https://github.com/eunbin0523/shopping_argo.git',
+                    url: 'https://github.com/eunbin0523/shopping-k8s-argo.git',
                     branch: 'master'
 
-                sh "sed -i 's/springshoppingcart:.*\$/springshoppingcart:${env.BUILD_NUMBER}/g' deploysvc.yaml"
-                sh "git add deploysvc.yaml"
+                sh "sed -i 's/springshoppingcart:.*\$/springshoppingcart:${env.BUILD_NUMBER}/g' deployment.yaml"
+                sh "git add deployment.yaml"
                 sh "git commit -m '[UPDATE] springshoppingcart ${env.BUILD_NUMBER} image versioning'"
 
                 withCredentials([gitUsernamePassword(credentialsId: 'eunbin0523')]) {
